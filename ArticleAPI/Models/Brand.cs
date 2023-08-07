@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ArticleAPI.Models
 {
-    public class Category
+    public class Brand
     {
         public int Id { get; set; }
         public string Name { get; set; }
