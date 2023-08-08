@@ -10,6 +10,24 @@ namespace ArticleAPI.Models
     {
         public BrandDao() { data = new DataAccess(); }
         public DataAccess data;
-
+        public List<Brand> getBrands()
+        {
+            List<Brand> list = new List<Brand>();
+            try
+            {
+                data.Query("SELECT Id, Name FROM Brand_Table;");
+                data.Read();
+                while (data.readerProp.Read())
+                {
+                    Brand aux_Brand= new Brand();
+                    aux_Brand.Id = (int)data.readerProp["Id"];
+                    aux_Brand.Name = (string)data.readerProp["Name"];
+                    list.Add(new Brand());
+                }
+                return list;
+            }
+            catch (Exception ex) { throw ex; }
+            finally { data.Close(); }
+        }
     }
 }
