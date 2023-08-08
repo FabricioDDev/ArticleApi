@@ -10,7 +10,7 @@ namespace ArticleAPI.Models
     {
         public BrandDao() { data = new DataAccess(); }
         public DataAccess data;
-        public List<Brand> getBrands()
+        public List<Brand> get_Brands()
         {
             List<Brand> list = new List<Brand>();
             try
