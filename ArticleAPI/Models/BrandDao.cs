@@ -22,7 +22,7 @@ namespace ArticleAPI.Models
                     Brand aux_Brand= new Brand();
                     aux_Brand.Id = (int)data.readerProp["Id"];
                     aux_Brand.Name = (string)data.readerProp["Name"];
-                    list.Add(new Brand());
+                    list.Add(aux_Brand);
                 }
                 return list;
             }
