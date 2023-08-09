@@ -12,5 +12,12 @@ namespace ArticleAPI.Controllers
     {
         public ArticleController() { articleDao = new ArticleDao(); }
         public ArticleDao articleDao;
+
+        // GET api/v1/article
+        public HttpResponseMessage Get()
+        {
+            List<Article> source = articleDao.get_Articles();
+            return Request.CreateResponse(HttpStatusCode.OK, source);
+        }
     }
 }
