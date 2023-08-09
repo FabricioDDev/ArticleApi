@@ -19,5 +19,11 @@ namespace ArticleAPI.Controllers
             List<Article> source = articleDao.get_Articles();
             return Request.CreateResponse(HttpStatusCode.OK, source);
         }
+        // POST api/article/by_name
+        public HttpResponseMessage Post([FromBody] Article art)
+        {
+            Article source = articleDao.get_Article_ByName(art.Model);
+            return Request.CreateResponse(HttpStatusCode.OK, source);
+        }
     }
 }
