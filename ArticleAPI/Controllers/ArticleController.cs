@@ -13,7 +13,7 @@ namespace ArticleAPI.Controllers
         public ArticleController() { articleDao = new ArticleDao(); }
         public ArticleDao articleDao;
 
-        // GET api/v1/article
+        // GET api/article
         public HttpResponseMessage Get()
         {
             List<Article> source = articleDao.get_Articles();
