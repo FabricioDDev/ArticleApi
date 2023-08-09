@@ -161,9 +161,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ArticleDao.cs" />
     <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\BrandDao.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryDao.cs" />
     <Compile Include="Models\Gama.cs" />
+    <Compile Include="Models\GamaDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +252,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DB\DB.csproj">
+      <Project>{40d77501-c3b1-402a-ae38-16592fd25de3}</Project>
+      <Name>DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
