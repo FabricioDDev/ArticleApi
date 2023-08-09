@@ -19,10 +19,10 @@ namespace ArticleAPI.Controllers
             List<Article> source = articleDao.get_Articles();
             return Request.CreateResponse(HttpStatusCode.OK, source);
         }
-        // POST api/article/by_name
+        // POST api/article/by_id-name
         public HttpResponseMessage Post([FromBody] Article art)
         {
-            Article source = articleDao.get_Article_ByName(art.Model);
+            Article source = art.id != 0? articleDao.get_Article_ByName(art.Model) : articleDao.get_Article_ByName(art.Model);
             return Request.CreateResponse(HttpStatusCode.OK, source);
         }
     }
