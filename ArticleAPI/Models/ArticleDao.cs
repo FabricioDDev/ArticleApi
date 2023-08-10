@@ -72,7 +72,7 @@ namespace ArticleAPI.Models
             Article article = new Article();
             try
             {
-                data.Query("SELECT A.Id as Id, A.Model as Model,A.Description as Description, A.Url_Img as Url_Image, A.Nro_Model as Nro_Model, B.Id as Id_Brand, B.Name as Brand_Name, C.Id as Cat_Id, C.Name as Cat_Name, G.Id as Id_Gama, G.Name as Gama_Name FROM Article_Table A JOIN Brand_Table B ON A.Id_Brand = B.Id JOIN Category_Table C ON A.Id_Category = C.Id JOIN Gama_Table G ON A.Id_Gama = G.Id where A.Id LIKE '%" + Id + "%';");
+                data.Query("SELECT A.Id as Id, A.Model as Model,A.Description as Description, A.Url_Img as Url_Image, A.Nro_Model as Nro_Model, B.Id as Id_Brand, B.Name as Brand_Name, C.Id as Cat_Id, C.Name as Cat_Name, G.Id as Id_Gama, G.Name as Gama_Name FROM Article_Table A JOIN Brand_Table B ON A.Id_Brand = B.Id JOIN Category_Table C ON A.Id_Category = C.Id JOIN Gama_Table G ON A.Id_Gama = G.Id where A.Id = " + Id + ";");
                 data.Read();
                 if (data.readerProp.Read())
                 {
