@@ -13,22 +13,28 @@ namespace ArticleAPI.Controllers
         public ArticleController() { articleDao = new ArticleDao(); }
         public ArticleDao articleDao;
 
-        // GET api/article
-        public HttpResponseMessage Get()
+        // GET api/article/all
+        [HttpGet]
+        [Route("api/article/all")]
+        public HttpResponseMessage Get_Articles()
         {
             List<Article> source = articleDao.get_Articles();
             return Request.CreateResponse(HttpStatusCode.OK, source);
         }
-        // GET api/article/search_byName
-        public HttpResponseMessage Get([FromBody] Article art, string n = "")
+        // GET api/article/search_article_by_name
+        [HttpGet]
+        [Route("api/article/search_article_by_name")]
+        public HttpResponseMessage Search_ByName([FromUri] string name)
         {
-            List<Article> source = articleDao.get_Articles_ByName(art.Model);
+            List<Article> source = articleDao.get_Articles_ByName(name);
             return Request.CreateResponse(HttpStatusCode.OK, source);
         }
         // GET api/article/search_byId
-        public HttpResponseMessage Get([FromBody] Article art, int x = 0)
+        [HttpGet]
+        [Route("api/article/search_by_Id")]
+        public HttpResponseMessage Search_ById([FromUri] int id)
         {
-            Article source = articleDao.get_Article_ById(art.id);
+            Article source = articleDao.get_Article_ById(id);
             return Request.CreateResponse(HttpStatusCode.OK, source);
         }
     }

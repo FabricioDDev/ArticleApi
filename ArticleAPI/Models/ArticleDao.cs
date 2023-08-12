@@ -1,6 +1,7 @@
 ﻿using DB;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -41,6 +42,9 @@ namespace ArticleAPI.Models
         }
         public List<Article> get_Articles_ByName(string model_name)
         {
+            if (String.IsNullOrEmpty(model_name))
+                return null;
+
             List<Article> list = new List<Article>();
             try
             {
@@ -69,7 +73,7 @@ namespace ArticleAPI.Models
         }
         public Article get_Article_ById(int Id)
         {
-            Article article = new Article();
+            if(Id < 1) return null;
             try
             {
                 data.Query("SELECT A.Id as Id, A.Model as Model,A.Description as Description, A.Url_Img as Url_Image, A.Nro_Model as Nro_Model, B.Id as Id_Brand, B.Name as Brand_Name, C.Id as Cat_Id, C.Name as Cat_Name, G.Id as Id_Gama, G.Name as Gama_Name FROM Article_Table A JOIN Brand_Table B ON A.Id_Brand = B.Id JOIN Category_Table C ON A.Id_Category = C.Id JOIN Gama_Table G ON A.Id_Gama = G.Id where A.Id = " + Id + ";");
