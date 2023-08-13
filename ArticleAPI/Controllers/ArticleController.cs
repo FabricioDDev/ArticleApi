@@ -29,13 +29,22 @@ namespace ArticleAPI.Controllers
             List<Article> source = articleDao.get_Articles_ByName(name);
             return Request.CreateResponse(HttpStatusCode.OK, source);
         }
-        // GET api/article/search_byId
+        // GET api/article/search_by_Id
         [HttpGet]
         [Route("api/article/search_by_Id")]
         public HttpResponseMessage Search_ById([FromUri] int id)
         {
             Article source = articleDao.get_Article_ById(id);
             return Request.CreateResponse(HttpStatusCode.OK, source);
+        }
+
+        // PUT api/article/update
+        [HttpPut]
+        [Route("api/article/update")]
+        public HttpResponseMessage update([FromBody] Article article)
+        {
+            bool answer = articleDao.update_Article(article);
+            return Request.CreateResponse(HttpStatusCode.OK, answer);
         }
     }
 }

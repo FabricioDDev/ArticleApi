@@ -99,5 +99,23 @@ namespace ArticleAPI.Models
             catch (Exception ex) { throw ex; }
             finally { data.Close(); }
         }
+        public bool update_Article(Article article)
+        {
+            try
+            {
+                data.Query("UPDATE Article_Table SET Model = @Model, Id_Brand = @Brand_Id, Nro_Model = @Nro_Model, Id_Category = @Category_Id, Description = @Description, Url_Img = @Url_Image, Id_Gama = @Id_Gama WHERE Id = @Id;");
+                data.Parameters("@Id", article.id);
+                data.Parameters("@Model", article.Model);
+                data.Parameters("@Brand_Id", article.brand.Id);
+                data.Parameters("@Nro_Model", article.nro_Model);
+                data.Parameters("@Category_Id", article.category.Id);
+                data.Parameters("@Description", article.description);
+                data.Parameters("@Url_Image", article.url_Image);
+                data.Parameters("@Id_Gama", article.gama.Id);
+                data.Execute();
+                return true;
+            }catch(Exception ex) { throw ex; }
+            finally { data.Close(); }
+        }
     }
 }
