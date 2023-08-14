@@ -55,5 +55,13 @@ namespace ArticleAPI.Controllers
             bool answer = articleDao.create_Article(article);
             return Request.CreateResponse(HttpStatusCode.OK, answer);
         }
+        // DELETE api/article/delete
+        [HttpDelete]
+        [Route("api/article/delete")]
+        public HttpResponseMessage delete([FromUri] int id)
+        {
+            bool answer = articleDao.delete_Article(id);
+            return Request.CreateResponse(HttpStatusCode.OK, answer);
+        }
     }
 }

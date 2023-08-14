@@ -135,5 +135,17 @@ namespace ArticleAPI.Models
             catch (Exception ex) { throw ex; }
             finally { data.Close(); }
         }
+
+        public bool delete_Article(int Id)
+        {
+            try
+            {
+                data.Query("DELETE Article_Table WHERE Id = @Id");
+                data.Parameters("@Id", Id);
+                data.Execute();
+                return true;
+            }catch(Exception ex) { throw ex; }
+            finally { data.Close(); }
+        }
     }
 }
