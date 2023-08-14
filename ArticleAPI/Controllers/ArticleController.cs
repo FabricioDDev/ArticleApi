@@ -46,5 +46,14 @@ namespace ArticleAPI.Controllers
             bool answer = articleDao.update_Article(article);
             return Request.CreateResponse(HttpStatusCode.OK, answer);
         }
+
+        // POST api/article/create
+        [HttpPost]
+        [Route("api/article/create")]
+        public HttpResponseMessage Create([FromBody] Article article)
+        {
+            bool answer = articleDao.create_Article(article);
+            return Request.CreateResponse(HttpStatusCode.OK, answer);
+        }
     }
 }

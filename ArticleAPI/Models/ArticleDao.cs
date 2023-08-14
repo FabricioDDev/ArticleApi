@@ -103,18 +103,36 @@ namespace ArticleAPI.Models
         {
             try
             {
-                data.Query("UPDATE Article_Table SET Model = @Model, Id_Brand = @Brand_Id, Nro_Model = @Nro_Model, Id_Category = @Category_Id, Description = @Description, Url_Img = @Url_Image, Id_Gama = @Id_Gama WHERE Id = @Id;");
-                data.Parameters("@Id", article.id);
+                data.Query("UPDATE Article_Table SET Model = @Model, Nro_Model = @Nro_Model, Id_Brand = @Id_Brand, Id_Category = @Id_Cat, Description = @Description, Url_Img = @Url_Img, Id_Gama = @Id_Gama WHERE Id = @Id;");
                 data.Parameters("@Model", article.Model);
-                data.Parameters("@Brand_Id", article.brand.Id);
                 data.Parameters("@Nro_Model", article.nro_Model);
-                data.Parameters("@Category_Id", article.category.Id);
+                data.Parameters("@Id_Brand", article.brand.Id);
+                data.Parameters("@Id_Cat", article.category.Id);
+                data.Parameters("@Description", article.description);
+                data.Parameters("@Url_Img", article.url_Image);
+                data.Parameters("@Id_Gama", article.gama.Id);
+                data.Parameters("@Id", article.id);
+                data.Execute();
+                return true;
+            }catch(Exception ex) { throw ex; }
+            finally { data.Close(); }
+        }
+        public bool create_Article(Article article)
+        {
+            try
+            {
+                data.Query("INSERT INTO Article_Table VALUES(@Model, @Nro_Model, @Brand_Id, @Id_Cat, @Description, @Url_Image, @Id_Gama)");
+                data.Parameters("@Model", article.Model);
+                data.Parameters("@Nro_Model", article.nro_Model);
+                data.Parameters("@Brand_Id", article.brand.Id);
+                data.Parameters("@Id_Cat", article.category.Id);
                 data.Parameters("@Description", article.description);
                 data.Parameters("@Url_Image", article.url_Image);
                 data.Parameters("@Id_Gama", article.gama.Id);
                 data.Execute();
                 return true;
-            }catch(Exception ex) { throw ex; }
+            }
+            catch (Exception ex) { throw ex; }
             finally { data.Close(); }
         }
     }
